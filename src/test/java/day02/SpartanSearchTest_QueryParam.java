@@ -33,7 +33,10 @@ public class SpartanSearchTest_QueryParam {
                 .get("/spartans/search")
         .then()
                 .log().all()
-                .statusCode(200);
+                .statusCode(200)
+        // assert number of element according to result
+                .body("numberOfElements" , is(6) );
+
     }
 
 
