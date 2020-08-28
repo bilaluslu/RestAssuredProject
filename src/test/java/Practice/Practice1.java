@@ -56,7 +56,7 @@ public class Practice1 {
     public void testPostSpartan(){
 
         Map<String,Object> postEmrah = new LinkedHashMap<>();
-        postEmrah.put("name","Emrah");
+        postEmrah.put("name","New1");
         postEmrah.put("gender","Male");
         postEmrah.put("phone",1236547893);
 
@@ -65,12 +65,8 @@ public class Practice1 {
                 .body( postEmrah )
         .when()
                 .post("api/spartans")
-
-                .then()
-                .log().all()
-                .statusCode(201)
-                .body("data.name", is("Emrah"))
-                .body("success",is("A Spartan is Born!"));
+        .then()
+                .log().all();
 
     }
 
@@ -79,10 +75,33 @@ public class Practice1 {
     public void testPutSpartan(){
 
         Map<String,Object> putMap = new LinkedHashMap<>();
+        putMap.put("name","New Name");
+        putMap.put("gender","Male");
+        putMap.put("phone",1236548520);
+
+        for (int i = 0; i < 500 ; i++) {
 
 
+            given().contentType(ContentType.JSON)
+                    .pathParam("id", i)
+                    .log().all()
+                    .body(putMap)
+                    .when()
+                    .put("/api/spartans/{id}")
+                    .then()
+                    .log().all()
+                    ;
+
+        }
 
     }
+
+
+
+
+
+
+
 
 
 }
