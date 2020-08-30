@@ -12,6 +12,7 @@ import static io.restassured.RestAssured.given;
 public class NewsAPI_Test {
 
 
+
     @DisplayName("News API get all News Author if the Source id is not null")
     @Test
     public void testNews(){
@@ -48,5 +49,6 @@ public class NewsAPI_Test {
 
 
     }
+
 
 }
